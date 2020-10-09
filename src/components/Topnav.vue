@@ -5,6 +5,7 @@
       <li><router-link to="/">主页</router-link></li>
       <li><router-link to="/doc"> 文档</router-link></li>
     </ul>
+    <span class="toggleIcon"> </span>
   </div>
 </template>
 <script lang="ts">
@@ -40,6 +41,18 @@ $color: #007974;
     flex-wrap: nowrap;
     > li {
       margin: 0 1em;
+    }
+  }
+
+  .toggleIcon {
+  }
+
+  @media (max-width: 500px) {
+    > .logo {
+      margin: 0 auto;
+    }
+    > .menu {
+      display: none;
     }
   }
 }

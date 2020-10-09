@@ -29,8 +29,11 @@ $color: #007974;
   width: 100%;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 20;
+  background: pink;
   > .logo {
     max-width: 6em;
     margin-right: auto;

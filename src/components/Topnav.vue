@@ -1,11 +1,11 @@
 <template>
   <div class="topnav">
-    <div class="logo" @click="toggleCollapse">LOGO</div>
+    <div class="logo">LOGO</div>
     <ul class="menu">
       <li><router-link to="/">主页</router-link></li>
       <li><router-link to="/doc"> 文档</router-link></li>
     </ul>
-    <span class="toggleIcon"> </span>
+    <span class="toggleIcon" @click="toggleCollapse" />
   </div>
 </template>
 <script lang="ts">
@@ -45,6 +45,15 @@ $color: #007974;
   }
 
   .toggleIcon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f00;
+    cursor: pointer;
   }
 
   @media (max-width: 500px) {
@@ -53,6 +62,9 @@ $color: #007974;
     }
     > .menu {
       display: none;
+    }
+    > .toggleIcon {
+      display: inline-block;
     }
   }
 }

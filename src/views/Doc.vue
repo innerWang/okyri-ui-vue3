@@ -19,7 +19,9 @@
           </li>
         </ol>
       </aside>
-      <main></main>
+      <main>
+        <router-view />
+      </main>
     </div>
   </div>
 </template>

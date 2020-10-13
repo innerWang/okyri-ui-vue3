@@ -1,5 +1,7 @@
 <template>
-  <button :class="{ checked }" @click="toggle"><span></span></button>
+  <button class="okyri-switch" :class="{ checked }" @click="toggle">
+    <span></span>
+  </button>
 </template>
 
 <script lang="ts">
@@ -20,9 +22,9 @@ export default {
 <style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
-$primary-color: blue;
-$grey-color: grey;
-button {
+$primary-color: #1890ff;
+$grey-color: #bfbfbf;
+.okyri-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -38,17 +40,30 @@ button {
     top: 2px;
     border-radius: 50%;
     background: #fff;
-    transition: left 0.25s;
+    transition: all 0.25s;
   }
 
   &:focus {
     outline: none;
   }
 
+  &:active {
+    > span {
+      width: $h2 + 4px;
+    }
+  }
+
   &.checked {
     background: $primary-color;
     > span {
       left: calc(100% - #{$h2} - 2px);
+    }
+
+    &:active {
+      > span {
+        width: $h2 + 4px;
+        margin-left: -4px;
+      }
     }
   }
 }

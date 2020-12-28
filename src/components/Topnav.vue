@@ -1,16 +1,26 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <router-link to="/" class="logo">
+      <svg class="icon">
+        <use xlink:href="#i-global"></use>
+      </svg>
+    </router-link>
     <ul class="menu">
       <li><router-link to="/">主页</router-link></li>
       <li><router-link to="/doc"> 文档</router-link></li>
     </ul>
-    <span class="toggleIcon" @click="toggleCollapse" />
+    <span v-if="toggleIconVisible" class="toggleIcon" @click="toggleCollapse" />
   </div>
 </template>
 <script lang="ts">
 import { inject, Ref } from 'vue';
 export default {
+  props: {
+    toggleIconVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const collapse = inject<Ref<boolean>>('collapse');
     const toggleCollapse = () => {
@@ -21,9 +31,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$color: #007974;
 .topnav {
-  color: $color;
   display: flex;
   padding: 16px;
   width: 100%;
@@ -33,10 +41,14 @@ $color: #007974;
   top: 0;
   left: 0;
   z-index: 20;
-  background: pink;
+  color: #fd5975;
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    svg {
+      height: 32px;
+      width: 32px;
+    }
   }
   > .menu {
     display: flex;

@@ -1,5 +1,6 @@
 import './lib/okyri_base.scss';
 import './index.scss';
+import './assets/iconfont';
 import { createApp } from 'vue';
 import App from './App.vue';
 

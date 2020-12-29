@@ -6,10 +6,11 @@
       </svg>
     </router-link>
     <ul class="menu">
-      <li><router-link to="/">主页</router-link></li>
-      <li><router-link to="/doc"> 文档</router-link></li>
+      <li><router-link to="/doc/intro"> 文档</router-link></li>
     </ul>
-    <span v-if="toggleIconVisible" class="toggleIcon" @click="toggleCollapse" />
+    <svg v-if="toggleIconVisible" class="toggleIcon" @click="toggleCollapse">
+      <use xlink:href="#i-menu1"></use>
+    </svg>
   </div>
 </template>
 <script lang="ts">
@@ -67,7 +68,6 @@ export default {
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    background: #f00;
     cursor: pointer;
   }
 

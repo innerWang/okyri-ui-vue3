@@ -79,3 +79,9 @@ export default {
 ### 其他
 
 1. Dribbble.com 上可以搜索 website ，可以查看对应的设计
+2. vite 没有使用 webpack，主要使用浏览器原生的 ES module (利用浏览器去解析 imports 然后按需编译返回，不会打包)和 rollup（production 模式）。但是浏览器仅支持 js，不支持导入 markdown 文件并解析，需要修改 vite 来支持。
+   - 参考： https://medium.com/@axwdev/writing-a-vite-plugin-for-vue-3-5bcc1c0915e0
+   - vite 的几个概念：
+     - dev server：现代浏览器可以将 js 通过 ES module 的方式导入，其他类型的文件则不行，一旦浏览器检测到一个 import 语句，会先交给 vite 的 dev server 进行处理。导入的文件可以是 javascript、vue、css 及任何类型的文件(只要你告诉 vite 怎么处理它)。vite 通过这个方式解除了浏览器的限制，因此也十分有用。
+     - rollup production bundle：对于静态内容，vite 会使用 rollup 进行打包。
+     - vue custom block transformation：有时候一些第三方库会让你往 vue 文件中添加一些自定义块，如`<docs>` 或 `<story>`，vite 可以指定如何处理这些块。

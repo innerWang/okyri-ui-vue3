@@ -9,7 +9,7 @@
           <a href="https://github.com/innerWang/okyri-ui-vue3" target="_blank"
             >Github</a
           >
-          <router-link to="/doc">开始</router-link>
+          <router-link to="/doc/get-started">开始</router-link>
         </p>
       </div>
     </div>

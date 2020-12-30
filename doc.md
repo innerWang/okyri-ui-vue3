@@ -80,8 +80,22 @@ export default {
 
 1. Dribbble.com 上可以搜索 website ，可以查看对应的设计
 2. vite 没有使用 webpack，主要使用浏览器原生的 ES module (利用浏览器去解析 imports 然后按需编译返回，不会打包)和 rollup（production 模式）。但是浏览器仅支持 js，不支持导入 markdown 文件并解析，需要修改 vite 来支持。
+
    - 参考： https://medium.com/@axwdev/writing-a-vite-plugin-for-vue-3-5bcc1c0915e0
    - vite 的几个概念：
      - dev server：现代浏览器可以将 js 通过 ES module 的方式导入，其他类型的文件则不行，一旦浏览器检测到一个 import 语句，会先交给 vite 的 dev server 进行处理。导入的文件可以是 javascript、vue、css 及任何类型的文件(只要你告诉 vite 怎么处理它)。vite 通过这个方式解除了浏览器的限制，因此也十分有用。
      - rollup production bundle：对于静态内容，vite 会使用 rollup 进行打包。
      - vue custom block transformation：有时候一些第三方库会让你往 vue 文件中添加一些自定义块，如`<docs>` 或 `<story>`，vite 可以指定如何处理这些块。
+
+3. vite 提供了类似 vue-loader 的 [custom blocks](https://github.com/vitejs/vite#custom-blocks) 功能，该功能可以在 vue 文件中自定义语言块，若要在 vite 中使用该功能，需要通过 `vite.config.ts`的 `vueCustomBlockTransforms` 选项来为自定义块指定转换函数。
+
+4. 低版本的 node.js 不支持的高级语法，可选的解决方案有两种：
+   - 使用旧语法，如使用 require 替换 import 等
+   - 使用 esbuild 自动把 TS 转义为旧语法，此时需要文件为 .ts 文件，vite 会自动处理
+5. rollup 打包只会对代码进行静态分析，对于使用`import()`**动态异步**加载的代码 rollup 无法识别。
+   - tip1：各种导入方式的区别
+     - commonJS 的 require 导入是**动态同步**加载，是值拷贝，需要代码运行时才可以计算完成，无法 TreeShaking。
+     - ES6 的 模块 import 导入是**静态同步**加载，是值引用，运行前就可以解析完依赖，可以 Treeshaking 优化。
+     - import() 导入语法是**动态异步**加载，无法 Treeshaking。
+6. 如何高亮源代码？？
+   - 使用 prismjs 和 v-html

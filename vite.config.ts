@@ -1,5 +1,23 @@
+//@ts-nocheck
+
 import md from './src/plugins/md';
+import fs from 'fs';
+import { baseParse } from '@vue/compiler-core';
 
 export default {
   plugins: [md()],
+  // 指定自定义块转换函数
+  vueCustomBlockTransforms: {
+    docs: (options) => {
+      const { path } = options;
+      const file = fs.readFileSync(path).toString();
+      const parsed = baseParse(file).children.find((n) => n.tag === 'docs');
+      const title = parsed.children[0].content;
+      const main = file.split(parsed.loc.source).join('').trim();
+      return `export default function (Component) {
+        Component.__sourceCode = ${JSON.stringify(main)}
+        Component.__sourceCodeTitle = ${JSON.stringify(title)}
+      }`.trim();
+    },
+  },
 };

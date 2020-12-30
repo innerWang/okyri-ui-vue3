@@ -66,5 +66,9 @@ $grey-color: #bfbfbf;
       }
     }
   }
+
+  &[disabled] {
+    background: rgba($color: $grey-color, $alpha: 0.8);
+  }
 }
 </style>

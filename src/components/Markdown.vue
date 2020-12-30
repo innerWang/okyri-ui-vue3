@@ -1,23 +1,15 @@
 <template>
-  <article class="markdown-body" v-html="text"></article>
+  <article class="markdown-body" v-html="content"></article>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
 export default {
   props: {
-    path: {
+    content: {
       type: String,
       required: true,
     },
-  },
-  setup(props) {
-    const text = ref<string>('');
-    import(props.path).then((res) => {
-      text.value = res.default;
-    });
-
-    return { text };
   },
 };
 </script>

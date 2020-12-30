@@ -8,6 +8,7 @@ const mdToJs = (str) => {
 };
 
 export default function () {
+  // 开发模式
   const configureServer = [
     async ({ app }) => {
       app.use(async (ctx, next) => {
@@ -21,6 +22,13 @@ export default function () {
       });
     },
   ];
-  const transforms = [];
+  // 生产模式，
+  // 参考 https://github.com/vitejs/vite/blob/master/src/node/config.ts
+  const transforms = [
+    {
+      test: (ctx) => ctx.path.endsWith('.md'),
+      transform: ({ code }) => mdToJs(code),
+    },
+  ];
   return { configureServer, transforms };
 }

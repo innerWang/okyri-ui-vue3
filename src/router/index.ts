@@ -8,9 +8,12 @@ import TabsDemo from '../components/TabsDemo.vue';
 import { h } from 'vue';
 import Markdown from '../components/Markdown.vue';
 
+import intro from '../markdown/intro.md';
+import install from '../markdown/install.md';
+import getstarted from '../markdown/getstarted.md';
+
 // 传入 key 用于标识组件的唯一性，保证渲染不同的实例时会重走生命周期。
-const md = (filename) =>
-  h(Markdown, { path: `../markdown/${filename}`, key: filename });
+const md = (content, key) => h(Markdown, { content, key });
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -23,15 +26,15 @@ const router = createRouter({
       children: [
         {
           path: 'intro',
-          component: md('intro.md'),
+          component: md(intro, 'intro'),
         },
         {
           path: 'get-started',
-          component: md('getstarted.md'),
+          component: md(getstarted, 'getstarted'),
         },
         {
           path: 'install',
-          component: md('install.md'),
+          component: md(install, 'install'),
         },
         {
           path: 'switch',

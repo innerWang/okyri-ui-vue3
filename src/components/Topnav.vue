@@ -6,7 +6,7 @@
       </svg>
     </router-link>
     <ul class="menu">
-      <li><router-link to="/doc/intro"> 文档</router-link></li>
+      <li><router-link to="/doc"> 文档</router-link></li>
     </ul>
     <svg v-if="toggleIconVisible" class="toggleIcon" @click="toggleCollapse">
       <use xlink:href="#i-menu1"></use>

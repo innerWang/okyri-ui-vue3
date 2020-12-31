@@ -24,6 +24,11 @@ const router = createRouter({
       path: '/doc',
       component: Doc,
       children: [
+        // "/doc" 的路由跳转到 "/doc/intro"
+        {
+          path: '',
+          redirect: '/doc/intro',
+        },
         {
           path: 'intro',
           component: md(intro, 'intro'),

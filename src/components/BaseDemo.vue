@@ -51,6 +51,12 @@ export default {
     margin-bottom: 12px;
   }
 
+  > h3 {
+    display: inline-block;
+    padding-right: 12px;
+    background: linear-gradient(transparent 58%, #ffe7ca 0%);
+  }
+
   .code {
     padding: 16px 16px 8px;
     border-top: 1px dashed #d9d9d9;

@@ -1,41 +1,67 @@
 <template>
-  <div>DialogDemo</div>
-  <Dialog v-model:visible="x" :ok="ok" :cancel="cancel">
-    <template v-slot:title>
-      <strong>提示</strong>
-    </template>
-    <template v-slot:content>
-      <p>内容1111</p>
-    </template>
-  </Dialog>
-  <Button @click="toggle">显示模态窗</Button>
-  <Button @click="showDialog">一句话显示模态窗</Button>
+  <div class="dialogdemo">
+    <h2>Dialog组件示例</h2>
+    <Basedemo :comp="DialogDemo1" />
+    <Basedemo :comp="DialogDemo2" />
+    <h2>API</h2>
+    <h3>Props</h3>
+    <Baseproptable :data="data" />
+  </div>
 </template>
 <script lang="ts">
-import { ref, h } from 'vue';
-import Dialog from '../lib/Dialog.vue';
-import Button from '../lib/Button.vue';
-import { openDialog } from '../lib/openDialog';
+import DialogDemo1 from './dialog/DialogDemo1.vue';
+import DialogDemo2 from './dialog/DialogDemo2.vue';
+
+import Basedemo from './BaseDemo.vue';
+import Baseproptable from './BaseProps.vue';
 
 export default {
   components: {
-    Dialog,
-    Button,
+    Basedemo,
+    Baseproptable,
   },
   setup() {
-    const x = ref(false);
-    const toggle = () => {
-      x.value = !x.value;
-    };
-    const ok = () => console.log('click ok');
-    const cancel = () => console.log('click cancel');
-    const showDialog = () => {
-      openDialog({
-        title: () => h('strong', 'title'),
-        content: () => '内容',
-      });
-    };
-    return { x, toggle, ok, cancel, showDialog };
+    const data = [
+      {
+        prop: 'visible',
+        key: 'visible',
+        type: 'boolean',
+        description: '是否可见，默认值为 false，支持 v-model',
+      },
+      {
+        prop: 'maskClosable',
+        key: 'maskClosable',
+        type: 'boolean',
+        description: '是否可以点击 mask 关闭模态窗，默认为 true',
+      },
+      {
+        prop: 'ok',
+        key: 'ok',
+        type: 'function',
+        description: '点击确认按钮的回调函数',
+      },
+      {
+        prop: 'cancel',
+        key: 'cancel',
+        type: 'function',
+        description: '点击取消按钮的回调函数',
+      },
+    ];
+    return { data, DialogDemo1, DialogDemo2 };
   },
 };
 </script>
+<style lang="scss">
+.dialogdemo {
+  > h2 {
+    margin-bottom: 24px;
+  }
+
+  > h3 {
+    margin-bottom: 16px;
+  }
+  > p {
+    margin: 12px 0;
+  }
+}
+</style>

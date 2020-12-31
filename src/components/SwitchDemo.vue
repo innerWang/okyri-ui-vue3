@@ -4,7 +4,7 @@
     <Basedemo :comp="SwitchDemo1" />
     <Basedemo :comp="SwitchDemo2" />
     <h2>API</h2>
-    <h3>props 设置</h3>
+    <h3>Props</h3>
     <Baseproptable :data="data" />
     <p>另：支持原生 button 元素的所有属性。</p>
   </div>
@@ -26,7 +26,7 @@ export default {
       {
         prop: 'checked',
         key: 'checked',
-        type: 'Boolean',
+        type: 'boolean',
         description: '设置是否选中，支持 v-model',
       },
     ];

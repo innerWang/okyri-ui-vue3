@@ -6,7 +6,7 @@
 
 ```vue
 <template>
-  <Button></Button>
+  <Button>查询</Button>
 </template>
 <script>
 import { Button } from 'okyri-ui';

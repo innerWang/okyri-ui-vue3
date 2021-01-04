@@ -6,6 +6,7 @@ import { baseParse } from '@vue/compiler-core';
 
 export default {
   base: './',
+  assetsDir: 'assets',
   plugins: [md()],
   // 指定自定义块转换函数
   vueCustomBlockTransforms: {

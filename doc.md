@@ -100,3 +100,4 @@ export default {
 6. 如何高亮源代码？？
    - 使用 prismjs 和 v-html
 7. 默认的 vite 配置文件路径位于： packages/vite/src/node/config.ts
+8. github pages 不识别下划线对应的路径：原因在于 github pages 的 jekyll 模版会忽略下划线开头的文件。

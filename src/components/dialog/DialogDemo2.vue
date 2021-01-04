@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import { h } from 'vue';
-import Button from '../../lib/Button.vue';
-import { openDialog } from '../../lib/openDialog';
+import { openDialog, Button } from '../../lib';
+
 export default {
   components: {
     Button,

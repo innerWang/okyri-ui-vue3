@@ -16,8 +16,7 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import Dialog from '../../lib/Dialog.vue';
-import Button from '../../lib/Button.vue';
+import { Dialog, Button } from '../../lib';
 export default {
   components: {
     Dialog,

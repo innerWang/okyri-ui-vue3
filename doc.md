@@ -99,3 +99,4 @@ export default {
      - import() 导入语法是**动态异步**加载，无法 Treeshaking。
 6. 如何高亮源代码？？
    - 使用 prismjs 和 v-html
+7. 默认的 vite 配置文件路径位于： packages/vite/src/node/config.ts

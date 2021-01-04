@@ -101,3 +101,6 @@ export default {
    - 使用 prismjs 和 v-html
 7. 默认的 vite 配置文件路径位于： packages/vite/src/node/config.ts
 8. github pages 不识别下划线对应的路径：原因在于 github pages 的 jekyll 模版会忽略下划线开头的文件。
+9. 使用实验特性 [script setup](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md)
+10. 使用 [defineComponent](https://vue3js.cn/docs/zh/api/global-api.html#definecomponent)
+11. vue-codemod 可以帮助自动从 vue2 过渡到 vue3
